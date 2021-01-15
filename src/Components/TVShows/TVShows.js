@@ -1,11 +1,11 @@
 import React from "react";
 import { Spin, Modal } from "antd";
-import "./serial.css";
-import Episode from "./Episode";
+import "./TVShows.css";
+import Serial from "./Serial";
 import Search from "./Search";
 import ModalContent from "./ModalContent";
 
-const Serial = () => {
+const TVShows = () => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
@@ -84,7 +84,7 @@ const Serial = () => {
         />
         {filteredItems.map(item => {
           return (
-            <Episode
+            <Serial
               id={item.show.id}
               key={item.show.id}
               name={item.show.name}
@@ -99,11 +99,11 @@ const Serial = () => {
           onOk={handleToggleModal}
           onCancel={handleToggleModal}
         >
-          <ModalContent show={currentShow} />
+          <ModalContent item={currentShow} />
         </Modal>
       </div>
     );
   }
 };
 
-export default Serial;
+export default TVShows;

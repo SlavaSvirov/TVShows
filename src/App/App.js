@@ -1,14 +1,14 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "./App.css";
-import Serial from "../Components/Serial";
+import TVShows from "../Components/TVShows";
 
 function App() {
   return (
     <div className="App">
       <div className="content">
         <section className="serialList">
-          <Serial />
+          <TVShows />
         </section>
       </div>
     </div>

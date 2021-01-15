@@ -1,7 +1,7 @@
 import React from "react";
-import "./Episode.css";
+import "./Serial.css";
 
-function Episode({ name, img, rating, id, openModal }) {
+function Serial({ name, img, rating, id, openModal }) {
   return (
     <div className="episodeContainer">
       <div>
@@ -25,4 +25,4 @@ function Episode({ name, img, rating, id, openModal }) {
   );
 }
 
-export default Episode;
+export default Serial;
