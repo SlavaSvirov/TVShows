@@ -1,11 +1,8 @@
-.serialContainer {
+.episodeContainer {
   display: inline-block;
   padding: 5px;
 }
 img {
   width: 210px;
   height: 295px;
-}
-.showImage {
-  cursor: pointer;
 }

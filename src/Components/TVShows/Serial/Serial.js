@@ -3,7 +3,7 @@ import "./Serial.css";
 
 function Serial({ name, img, rating, id, openModal }) {
   return (
-    <div className="episodeContainer">
+    <div className="serialContainer">
       <div>
         <img
           className="showImage"

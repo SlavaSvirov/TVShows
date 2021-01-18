@@ -4,6 +4,7 @@ import "./TVShows.css";
 import Serial from "./Serial";
 import Search from "./Search";
 import ModalContent from "./ModalContent";
+import Episodes from "../Episodes/";
 
 const TVShows = () => {
   const [error, setError] = React.useState(null);
@@ -55,22 +56,6 @@ const TVShows = () => {
     setIsModalVisible(prevIsModalVisible => !prevIsModalVisible);
   };
 
-  // async componentDidMount() {
-  //   try {
-  //     const response = await fetch("http://api.tvmaze.com/shows/1/episodes");
-  //     const items = await response.json();
-  //     this.setState({
-  //       isLoaded: true,
-  //       items
-  //     });
-  //   } catch (error) {
-  //     this.setState({
-  //       isLoaded: true,
-  //       error
-  //     });
-  //   }
-  // }
-
   if (error) {
     return <p>Error {error.message} </p>;
   } else if (!isLoaded) {
@@ -93,8 +78,12 @@ const TVShows = () => {
             />
           );
         })}
+
+        {filteredItems.map(item => {
+          return <Episodes id={item.show.id} key={item.show.id} />;
+        })}
         <Modal
-          title="Basic Modal"
+          title="Описание Сериала"
           visible={isModalVisible}
           onOk={handleToggleModal}
           onCancel={handleToggleModal}
