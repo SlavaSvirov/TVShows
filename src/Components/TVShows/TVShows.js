@@ -4,7 +4,6 @@ import "./TVShows.css";
 import Serial from "./Serial";
 import Search from "./Search";
 import ModalContent from "./ModalContent";
-import Episodes from "../Episodes/";
 
 const TVShows = () => {
   const [error, setError] = React.useState(null);
@@ -67,6 +66,7 @@ const TVShows = () => {
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
         />
+
         {filteredItems.map(item => {
           return (
             <Serial
@@ -79,9 +79,6 @@ const TVShows = () => {
           );
         })}
 
-        {filteredItems.map(item => {
-          return <Episodes id={item.show.id} key={item.show.id} />;
-        })}
         <Modal
           title="Описание Сериала"
           visible={isModalVisible}

@@ -1,0 +1,17 @@
+.episodeContainer {
+  display: flex;
+  padding: 5px;
+  width: 1000px;
+}
+.everyEpisode {
+  text-align: start;
+  width: 250px;
+}
+img {
+  width: 210px;
+  height: 295px;
+}
+
+.showImage {
+  cursor: pointer;
+}

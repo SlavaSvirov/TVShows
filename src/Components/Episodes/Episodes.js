@@ -1,7 +1,9 @@
 import React from "react";
-import "./Episodes.css";
+import styles from "./styles.module.css";
+import { Spin } from "antd";
+import Episode from "./Episode";
 
-const Episodes = ({ id }) => {
+const Episodes = props => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
@@ -10,7 +12,7 @@ const Episodes = ({ id }) => {
     (async () => {
       try {
         const response = await fetch(
-          `http://api.tvmaze.com/shows/${this.props.id}/episodes`
+          `http://api.tvmaze.com/shows/${props.match.params.id}/episodes`
         );
         const items = await response.json();
         setItems(items);
@@ -22,25 +24,28 @@ const Episodes = ({ id }) => {
     })();
   }, []);
 
-   if (error) {
+  if (error) {
     return <p>Error {error.message} </p>;
   } else if (!isLoaded) {
     return <Spin />;
   } else {
-  return (
-    <div className="episodeContainer">
-      <div>
-        <img
-          src={
-            (items && items.image) ||
-            "https://st2.depositphotos.com/2234823/8317/i/600/depositphotos_83178060-stock-photo-digital-camera.jpg"
-          }
-          alt="#"
-        />
-        <div>{items.name}</div>
+    return (
+      <div className={styles.episodeContainer}>
+        <div>
+          {items.map(item => {
+            return (
+              <Episode
+                name={item.name}
+                img={item.image.medium}
+                key={item.id}
+                summary={item.summary}
+              />
+            );
+          })}
+          <div>name</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
-
 export default Episodes;
