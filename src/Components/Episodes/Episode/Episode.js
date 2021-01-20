@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "antd";
+import Search from "../../Search";
 import styles from "./styles.module.css";
 
 const Episode = ({ name, img, summary }) => {
@@ -21,15 +23,19 @@ const Episode = ({ name, img, summary }) => {
         <img
           className="showImage"
           src={
-            img ||
+            (img && img.medium) ||
             "https://st2.depositphotos.com/2234823/8317/i/600/depositphotos_83178060-stock-photo-digital-camera.jpg"
           }
           alt={name}
         />
         <div>{name}</div>
       </div>
-      <p>{description.replace(/<[^>]*>/g, "")}</p>
-      <button onClick={handleRollUp}>Развернуть</button>
+      <p className="ellips">{description.replace(/<[^>]*>/g, "")}</p>
+      <div className="btn">
+        <Button type="primary" onClick={handleRollUp}>
+          {isRollUp ? "Свернуть" : "Развернуть"}
+        </Button>
+      </div>
     </div>
   );
 };

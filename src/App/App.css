@@ -1,9 +1,10 @@
 .App {
-  background-color: rgba(196, 173, 173, 0.877);
+  background-color: black;
   text-align: center;
   align-content: center;
   width: 1000px;
   margin: 0 auto;
+  color: whitesmoke;
 }
 .serialList {
   display: flex;

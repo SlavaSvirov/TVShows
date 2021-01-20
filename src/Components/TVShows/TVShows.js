@@ -2,7 +2,7 @@ import React from "react";
 import { Spin, Modal } from "antd";
 import "./TVShows.css";
 import Serial from "./Serial";
-import Search from "./Search";
+import Search from "../Search";
 import ModalContent from "./ModalContent";
 
 const TVShows = () => {

@@ -1,17 +1,27 @@
 .episodeContainer {
   display: flex;
-  padding: 5px;
+  padding: 10px;
   width: 1000px;
+  justify-content: space-between;
+  text-align: left;
+}
+.btn {
+  margin: 25px;
 }
 .everyEpisode {
   text-align: start;
-  width: 250px;
 }
 img {
-  width: 210px;
+  width: 300px;
   height: 295px;
 }
 
 .showImage {
   cursor: pointer;
+}
+.ellips {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 5px;
 }

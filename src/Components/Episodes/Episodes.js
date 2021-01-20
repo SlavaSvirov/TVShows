@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./styles.module.css";
 import { Spin } from "antd";
+import styles from "./styles.module.css";
+import Search from "../Search";
 import Episode from "./Episode";
 
 const Episodes = props => {
@@ -31,12 +32,13 @@ const Episodes = props => {
   } else {
     return (
       <div className={styles.episodeContainer}>
+        <Search />
         <div>
           {items.map(item => {
             return (
               <Episode
                 name={item.name}
-                img={item.image.medium}
+                img={item.image}
                 key={item.id}
                 summary={item.summary}
               />
