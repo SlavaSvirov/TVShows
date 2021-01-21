@@ -1,18 +1,22 @@
 import React from "react";
 import { Button } from "antd";
+import cn from "classnames";
 import Search from "../../Search";
 import styles from "./styles.module.css";
 
 const Episode = ({ name, img, summary }) => {
-  const [description, setDescription] = React.useState(summary.slice(0, 100));
-  // .replace(/<[^>]*>/g, "");
+  const exactSummary = summary || "без описания";
+  const [description, setDescription] = React.useState(
+    exactSummary.slice(0, 100)
+  );
   const [isRollUp, setIsRollUp] = React.useState(false);
+  const toShowRollUpBtn = exactSummary.length > 100;
 
   const handleRollUp = () => {
     if (!isRollUp) {
-      setDescription(summary);
+      setDescription(exactSummary);
     } else {
-      setDescription(summary.slice(0, 100));
+      setDescription(exactSummary.slice(0, 100));
     }
     setIsRollUp(prevIsRollup => !prevIsRollup);
   };
@@ -30,11 +34,15 @@ const Episode = ({ name, img, summary }) => {
         />
         <div>{name}</div>
       </div>
-      <p className="ellips">{description.replace(/<[^>]*>/g, "")}</p>
+      <p className={cn({ [styles.ellips]: !isRollUp })}>
+        {description.replace(/<[^>]*>/g, "")}
+      </p>
       <div className="btn">
-        <Button type="primary" onClick={handleRollUp}>
-          {isRollUp ? "Свернуть" : "Развернуть"}
-        </Button>
+        {toShowRollUpBtn && (
+          <Button type="primary" onClick={handleRollUp}>
+            {isRollUp ? "Свернуть" : "Развернуть"}
+          </Button>
+        )}
       </div>
     </div>
   );

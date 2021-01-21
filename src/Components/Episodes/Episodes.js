@@ -1,5 +1,7 @@
 import React from "react";
 import { Spin } from "antd";
+import { connect } from "react-redux";
+import { invokeAction1 } from "../../data/redux/actionCreators";
 import styles from "./styles.module.css";
 import Search from "../Search";
 import Episode from "./Episode";
@@ -33,6 +35,8 @@ const Episodes = props => {
     return (
       <div className={styles.episodeContainer}>
         <Search />
+        <div>{props.valueFromStore}</div>
+        <button onClick={props.changeValue}>Тест</button>
         <div>
           {items.map(item => {
             return (
@@ -50,4 +54,17 @@ const Episodes = props => {
     );
   }
 };
-export default Episodes;
+
+function mapStateToProps(state) {
+  const { value } = state;
+  return { valueFromStore: value };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeValue: () => dispatch(invokeAction1()),
+    decrement: () => dispatch({ type: "DECREMENT" }),
+    reset: () => dispatch({ type: "RESET" })
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Episodes);
