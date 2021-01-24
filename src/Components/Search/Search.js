@@ -5,7 +5,11 @@ import "./Search.css";
 function Search({ onChange, filterByImage }) {
   return (
     <div className="inputBar">
-      <Input onChange={onChange} placeholder="Введите запрос" />
+      <Input
+        className="input-row"
+        onChange={onChange}
+        placeholder="Введите запрос"
+      />
       <Checkbox className="checkboxCustom" onChange={filterByImage}>
         С картинками
       </Checkbox>

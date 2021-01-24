@@ -1,8 +1,10 @@
 .inputBar {
-  padding-top: 10px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding: 10px 80px 0px 80px;
 }
 .checkboxCustom {
   color: white;
+  border-radius: 50%;
+}
+.input-row {
+  border-radius: 10px;
 }
