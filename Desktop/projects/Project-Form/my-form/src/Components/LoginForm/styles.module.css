@@ -1,0 +1,33 @@
+.form {
+  width: 30%;
+  margin: 0 auto;
+  min-height: 300px;
+  background: #4bd3b5d8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+  margin-bottom: 30px;
+}
+.formGroup {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px 15px 15px;
+}
+.formControl {
+  border-radius: 10px;
+  padding-left: 30px;
+}
+.inputWrapper {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 24%;
+  left: 5px;
+  z-index: 1;
+}
+.labelName {
+  font-size: 18px;
+}
+.button {
+  margin-bottom: 20px;
+}
