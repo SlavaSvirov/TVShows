@@ -1,15 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setSerials } from "../../data/redux/actionCreators";
 import { Spin, Modal } from "antd";
 import "./TVShows.css";
 import Serial from "./Serial";
 import Search from "../Search";
 import ModalContent from "./ModalContent";
 
-const TVShows = () => {
+const TVShows = props => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
-  const [items, setItems] = React.useState([]);
-  const [filteredItems, setFilteredItems] = React.useState(items);
+  // const [items, setItems] = React.useState([]);
+  const [filteredItems, setFilteredItems] = React.useState(props.serials);
   const [checked, setChecked] = React.useState(false);
   const [text, setText] = React.useState("");
   const [isModalVisible, setIsModalVisible] = React.useState(false);
@@ -22,9 +24,10 @@ const TVShows = () => {
           "http://api.tvmaze.com/search/shows?q=man"
         );
         const items = await response.json();
-        setItems(items);
+        props.setSerials(items);
+        // setItems(items);
         setIsLoaded(true);
-        setFilteredItems(items);
+        setFilteredItems(props.serials);
       } catch (error) {
         setIsLoaded(true);
         setError(error);
@@ -33,7 +36,7 @@ const TVShows = () => {
   }, []);
 
   React.useEffect(() => {
-    const filteredItems = items.filter(i => {
+    const filteredItems = props.serials.filter(i => {
       const lowerName = i.show.name.toLowerCase();
       if (checked && !i.show.image) {
         return;
@@ -42,7 +45,7 @@ const TVShows = () => {
     });
     setFilteredItems(filteredItems);
   }, [checked, text]);
-
+  console.log(props);
   const handleFilterByImg = event => setChecked(event.target.checked);
 
   const handleFilterByText = event => setText(event.target.value);
@@ -92,4 +95,17 @@ const TVShows = () => {
   }
 };
 
-export default TVShows;
+function mapStateToProps(state) {
+  const { serials } = state;
+  return {
+    serials
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSerials: items => dispatch(setSerials(items))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TVShows);

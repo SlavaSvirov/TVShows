@@ -18,6 +18,7 @@ const Episodes = props => {
         );
         const items = await response.json();
         props.setEpisodes(items);
+
         setIsLoaded(true);
       } catch (error) {
         setIsLoaded(true);
@@ -25,6 +26,7 @@ const Episodes = props => {
       }
     })();
   }, []);
+  console.log(props);
 
   if (error) {
     return <p>Error {error.message} </p>;
