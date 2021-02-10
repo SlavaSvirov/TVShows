@@ -1,1 +1,1 @@
-export const ACTION_1 = "ACTION_1";
+export const SET_EPISODES = "SET_EPISODES";

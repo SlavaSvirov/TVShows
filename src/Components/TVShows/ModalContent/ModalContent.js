@@ -9,7 +9,9 @@ const ModalContent = ({ item }) => {
 
   return (
     <div>
-      year: {year.toLocaleDateString("ru")} {description}
+      <span>year: {year.toLocaleDateString("ru")}</span>
+
+      <div>{description}</div>
       <div className="btn">
         <Button type="primary" onClick={() => {}}>
           <NavLink to={`/episodes/${item.show.id}`}>Список серий</NavLink>

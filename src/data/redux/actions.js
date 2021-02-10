@@ -1,3 +1,3 @@
-import { ACTION_1 } from "./constants";
+import { SET_EPISODES } from "./constants";
 
-export const action_1 = { type: ACTION_1, payload: true };
+export const setEpisodes = { type: SET_EPISODES, payload: true };

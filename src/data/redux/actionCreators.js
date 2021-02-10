@@ -1,5 +1,5 @@
-import { action_1 } from "./actions";
+import { SET_EPISODES } from "./constants";
 
-export const invokeAction1 = () => {
-  return action_1;
+export const setEpisodes = payload => {
+  return { type: SET_EPISODES, payload };
 };

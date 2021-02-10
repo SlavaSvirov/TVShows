@@ -1,7 +1,7 @@
 import React from "react";
 import { Spin } from "antd";
 import { connect } from "react-redux";
-import { invokeAction1 } from "../../data/redux/actionCreators";
+import { setEpisodes } from "../../data/redux/actionCreators";
 import styles from "./styles.module.css";
 import Search from "../Search";
 import Episode from "./Episode";
@@ -9,7 +9,6 @@ import Episode from "./Episode";
 const Episodes = props => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
-  const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
     (async () => {
@@ -18,7 +17,7 @@ const Episodes = props => {
           `http://api.tvmaze.com/shows/${props.match.params.id}/episodes`
         );
         const items = await response.json();
-        setItems(items);
+        props.setEpisodes(items);
         setIsLoaded(true);
       } catch (error) {
         setIsLoaded(true);
@@ -38,13 +37,13 @@ const Episodes = props => {
         <div>{props.valueFromStore}</div>
         <button onClick={props.changeValue}>Тест</button>
         <div>
-          {items.map(item => {
+          {props.episodes.map(episode => {
             return (
               <Episode
-                name={item.name}
-                img={item.image}
-                key={item.id}
-                summary={item.summary}
+                name={episode.name}
+                img={episode.image}
+                key={episode.id}
+                summary={episode.summary}
               />
             );
           })}
@@ -56,15 +55,16 @@ const Episodes = props => {
 };
 
 function mapStateToProps(state) {
-  const { value } = state;
-  return { valueFromStore: value };
+  const { episodes } = state;
+  return {
+    episodes
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeValue: () => dispatch(invokeAction1()),
-    decrement: () => dispatch({ type: "DECREMENT" }),
-    reset: () => dispatch({ type: "RESET" })
+    setEpisodes: items => dispatch(setEpisodes(items))
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Episodes);
