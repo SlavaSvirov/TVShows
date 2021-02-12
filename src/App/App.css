@@ -15,5 +15,11 @@
   flex-flow: row wrap;
 }
 .content {
-  width: 1000px;
+  max-width: 1000px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 700px;
+  }
 }

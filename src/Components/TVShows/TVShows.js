@@ -11,7 +11,7 @@ const TVShows = props => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   // const [items, setItems] = React.useState([]);
-  const [filteredItems, setFilteredItems] = React.useState(props.serials);
+  const [filteredItems, setFilteredItems] = React.useState([]);
   const [checked, setChecked] = React.useState(false);
   const [text, setText] = React.useState("");
   const [isModalVisible, setIsModalVisible] = React.useState(false);
@@ -25,9 +25,10 @@ const TVShows = props => {
         );
         const items = await response.json();
         props.setSerials(items);
+
         // setItems(items);
         setIsLoaded(true);
-        setFilteredItems(props.serials);
+        setFilteredItems(items);
       } catch (error) {
         setIsLoaded(true);
         setError(error);
@@ -43,9 +44,11 @@ const TVShows = props => {
       }
       return lowerName.includes(text.toLowerCase());
     });
+    console.log(filteredItems);
+
     setFilteredItems(filteredItems);
   }, [checked, text]);
-  console.log(props);
+
   const handleFilterByImg = event => setChecked(event.target.checked);
 
   const handleFilterByText = event => setText(event.target.value);
