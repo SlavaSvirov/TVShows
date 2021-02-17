@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/TVShows/static/css/main.8da9b99f.chunk.css",
+    "main.js": "/TVShows/static/js/main.013014be.chunk.js",
+    "main.js.map": "/TVShows/static/js/main.013014be.chunk.js.map",
+    "runtime-main.js": "/TVShows/static/js/runtime-main.6af093a4.js",
+    "runtime-main.js.map": "/TVShows/static/js/runtime-main.6af093a4.js.map",
+    "static/css/2.b544de60.chunk.css": "/TVShows/static/css/2.b544de60.chunk.css",
+    "static/js/2.471ec0e2.chunk.js": "/TVShows/static/js/2.471ec0e2.chunk.js",
+    "static/js/2.471ec0e2.chunk.js.map": "/TVShows/static/js/2.471ec0e2.chunk.js.map",
+    "index.html": "/TVShows/index.html",
+    "static/css/2.b544de60.chunk.css.map": "/TVShows/static/css/2.b544de60.chunk.css.map",
+    "static/css/main.8da9b99f.chunk.css.map": "/TVShows/static/css/main.8da9b99f.chunk.css.map",
+    "static/js/2.471ec0e2.chunk.js.LICENSE.txt": "/TVShows/static/js/2.471ec0e2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6af093a4.js",
+    "static/css/2.b544de60.chunk.css",
+    "static/js/2.471ec0e2.chunk.js",
+    "static/css/main.8da9b99f.chunk.css",
+    "static/js/main.013014be.chunk.js"
+  ]
+}
