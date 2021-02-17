@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import Search from "../Search";
 import Episode from "./Episode";
 
-const Episodes = props => {
+const Episodes = (props) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
 
@@ -14,7 +14,7 @@ const Episodes = props => {
     (async () => {
       try {
         const response = await fetch(
-          `http://api.tvmaze.com/shows/${props.match.params.id}/episodes`
+          `https://api.tvmaze.com/shows/${props.match.params.id}/episodes`
         );
         const items = await response.json();
         props.setEpisodes(items);
@@ -39,7 +39,7 @@ const Episodes = props => {
         <div>{props.valueFromStore}</div>
         <button onClick={props.changeValue}>Тест</button>
         <div>
-          {props.episodes.map(episode => {
+          {props.episodes.map((episode) => {
             return (
               <Episode
                 name={episode.name}
@@ -59,13 +59,13 @@ const Episodes = props => {
 function mapStateToProps(state) {
   const { episodes } = state;
   return {
-    episodes
+    episodes,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setEpisodes: items => dispatch(setEpisodes(items))
+    setEpisodes: (items) => dispatch(setEpisodes(items)),
   };
 };
 

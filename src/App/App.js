@@ -12,7 +12,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <div className="content">
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <section className="serialList">
               <Route exact path="/" component={TVShows} />
               <Route path="/episodes/:id" component={Episodes} />

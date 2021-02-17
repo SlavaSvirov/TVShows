@@ -7,7 +7,7 @@ import Serial from "./Serial";
 import Search from "../Search";
 import ModalContent from "./ModalContent";
 
-const TVShows = props => {
+const TVShows = (props) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   // const [items, setItems] = React.useState([]);
@@ -21,7 +21,7 @@ const TVShows = props => {
     (async () => {
       try {
         const response = await fetch(
-          "http://api.tvmaze.com/search/shows?q=man"
+          "https://api.tvmaze.com/search/shows?q=man"
         );
         const items = await response.json();
         props.setSerials(items);
@@ -37,7 +37,7 @@ const TVShows = props => {
   }, []);
 
   React.useEffect(() => {
-    const filteredItems = props.serials.filter(i => {
+    const filteredItems = props.serials.filter((i) => {
       const lowerName = i.show.name.toLowerCase();
       if (checked && !i.show.image) {
         return;
@@ -49,16 +49,16 @@ const TVShows = props => {
     setFilteredItems(filteredItems);
   }, [checked, text]);
 
-  const handleFilterByImg = event => setChecked(event.target.checked);
+  const handleFilterByImg = (event) => setChecked(event.target.checked);
 
-  const handleFilterByText = event => setText(event.target.value);
+  const handleFilterByText = (event) => setText(event.target.value);
 
-  const handleToggleModal = id => {
+  const handleToggleModal = (id) => {
     if (id) {
-      const currentShow = filteredItems.find(i => i.show.id === id);
+      const currentShow = filteredItems.find((i) => i.show.id === id);
       setCurrentShow(currentShow);
     }
-    setIsModalVisible(prevIsModalVisible => !prevIsModalVisible);
+    setIsModalVisible((prevIsModalVisible) => !prevIsModalVisible);
   };
 
   if (error) {
@@ -73,7 +73,7 @@ const TVShows = props => {
           filterByImage={handleFilterByImg}
         />
 
-        {filteredItems.map(item => {
+        {filteredItems.map((item) => {
           return (
             <Serial
               id={item.show.id}
@@ -101,13 +101,13 @@ const TVShows = props => {
 function mapStateToProps(state) {
   const { serials } = state;
   return {
-    serials
+    serials,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setSerials: items => dispatch(setSerials(items))
+    setSerials: (items) => dispatch(setSerials(items)),
   };
 };
 
