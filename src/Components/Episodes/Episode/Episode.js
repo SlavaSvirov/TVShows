@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import cn from "classnames";
 import styles from "./styles.module.css";
+import noImg from "../../../img/noPhoto.png";
 
 const Episode = ({ name, img, summary }) => {
   const exactSummary = summary || "без описания";
@@ -17,7 +18,7 @@ const Episode = ({ name, img, summary }) => {
     } else {
       setDescription(exactSummary.slice(0, 100));
     }
-    setIsRollUp(prevIsRollup => !prevIsRollup);
+    setIsRollUp((prevIsRollup) => !prevIsRollup);
   };
 
   return (
@@ -25,10 +26,7 @@ const Episode = ({ name, img, summary }) => {
       <div className={styles.everyEpisode}>
         <img
           className={styles.imageShow}
-          src={
-            (img && img.medium) ||
-            "https://st2.depositphotos.com/2234823/8317/i/600/depositphotos_83178060-stock-photo-digital-camera.jpg"
-          }
+          src={(img && img.medium) || noImg}
           alt={name}
         />
         <div>{name}</div>

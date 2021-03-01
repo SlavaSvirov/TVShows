@@ -9,6 +9,9 @@ import Episode from "./Episode";
 const Episodes = (props) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
+  const [text, setText] = React.useState("");
+  const [filteredItems, setFilteredItems] = React.useState([]);
 
   React.useEffect(() => {
     (async () => {
@@ -18,15 +21,30 @@ const Episodes = (props) => {
         );
         const items = await response.json();
         props.setEpisodes(items);
-
         setIsLoaded(true);
+        setFilteredItems(items);
       } catch (error) {
         setIsLoaded(true);
         setError(error);
       }
     })();
   }, []);
-  console.log(props);
+
+  React.useEffect(() => {
+    const filteredEpisodes = props.episodes.filter((i) => {
+      const lowerName = i.name.toLowerCase();
+      if (checked && !i.image) {
+        return;
+      }
+      return lowerName.includes(text.toLowerCase());
+    });
+
+    setFilteredItems(filteredEpisodes);
+  }, [checked, text]);
+
+  const handleFilterByImg = (event) => setChecked(event.target.checked);
+
+  const handleFilterByText = (event) => setText(event.target.value);
 
   if (error) {
     return <p>Error {error.message} </p>;
@@ -35,11 +53,14 @@ const Episodes = (props) => {
   } else {
     return (
       <div className={styles.episodeContainer}>
-        <Search />
+        <Search
+          onChange={handleFilterByText}
+          filterByImage={handleFilterByImg}
+        />
         <div>{props.valueFromStore}</div>
         <button onClick={props.changeValue}>Тест</button>
         <div>
-          {props.episodes.map((episode) => {
+          {filteredItems.map((episode) => {
             return (
               <Episode
                 name={episode.name}

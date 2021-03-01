@@ -11,7 +11,7 @@ function Search({ onChange, filterByImage }) {
         placeholder="Введите запрос"
       />
       <Checkbox className="checkboxCustom" onChange={filterByImage}>
-        С картинками
+        С изображениями
       </Checkbox>
     </div>
   );
