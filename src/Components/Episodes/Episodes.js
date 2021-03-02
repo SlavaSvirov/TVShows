@@ -58,7 +58,6 @@ const Episodes = (props) => {
           filterByImage={handleFilterByImg}
         />
         <div>{props.valueFromStore}</div>
-        <button onClick={props.changeValue}>Тест</button>
         <div>
           {filteredItems.map((episode) => {
             return (

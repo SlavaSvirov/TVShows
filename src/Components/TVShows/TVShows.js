@@ -62,7 +62,7 @@ const TVShows = (props) => {
     return <Spin />;
   } else {
     return (
-      <div>
+      <div className="TvShowsContainer">
         <Search
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}

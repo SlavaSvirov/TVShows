@@ -9,6 +9,7 @@ function Search({ onChange, filterByImage }) {
         className="input-row"
         onChange={onChange}
         placeholder="Введите запрос"
+        size="800px"
       />
       <Checkbox className="checkboxCustom" onChange={filterByImage}>
         С изображениями
