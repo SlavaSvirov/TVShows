@@ -27,7 +27,7 @@ const ModalContent = ({ item }) => {
       setSelectedVideo(trailer.data.items[0]);
     })();
     console.log(selectedVideo);
-  }, []);
+  }, [item.show.id]);
 
   return (
     <div>
