@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/TVShows/static/css/main.c32eef6b.chunk.css",
-    "main.js": "/TVShows/static/js/main.8830074c.chunk.js",
-    "main.js.map": "/TVShows/static/js/main.8830074c.chunk.js.map",
+    "main.css": "/TVShows/static/css/main.47fd22a5.chunk.css",
+    "main.js": "/TVShows/static/js/main.ebd09bf4.chunk.js",
+    "main.js.map": "/TVShows/static/js/main.ebd09bf4.chunk.js.map",
     "runtime-main.js": "/TVShows/static/js/runtime-main.6af093a4.js",
     "runtime-main.js.map": "/TVShows/static/js/runtime-main.6af093a4.js.map",
     "static/css/2.b544de60.chunk.css": "/TVShows/static/css/2.b544de60.chunk.css",
-    "static/js/2.ee2ef3bb.chunk.js": "/TVShows/static/js/2.ee2ef3bb.chunk.js",
-    "static/js/2.ee2ef3bb.chunk.js.map": "/TVShows/static/js/2.ee2ef3bb.chunk.js.map",
+    "static/js/2.ed5e2f40.chunk.js": "/TVShows/static/js/2.ed5e2f40.chunk.js",
+    "static/js/2.ed5e2f40.chunk.js.map": "/TVShows/static/js/2.ed5e2f40.chunk.js.map",
     "index.html": "/TVShows/index.html",
     "static/css/2.b544de60.chunk.css.map": "/TVShows/static/css/2.b544de60.chunk.css.map",
-    "static/css/main.c32eef6b.chunk.css.map": "/TVShows/static/css/main.c32eef6b.chunk.css.map",
-    "static/js/2.ee2ef3bb.chunk.js.LICENSE.txt": "/TVShows/static/js/2.ee2ef3bb.chunk.js.LICENSE.txt"
+    "static/css/main.47fd22a5.chunk.css.map": "/TVShows/static/css/main.47fd22a5.chunk.css.map",
+    "static/js/2.ed5e2f40.chunk.js.LICENSE.txt": "/TVShows/static/js/2.ed5e2f40.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6af093a4.js",
     "static/css/2.b544de60.chunk.css",
-    "static/js/2.ee2ef3bb.chunk.js",
-    "static/css/main.c32eef6b.chunk.css",
-    "static/js/main.8830074c.chunk.js"
+    "static/js/2.ed5e2f40.chunk.js",
+    "static/css/main.47fd22a5.chunk.css",
+    "static/js/main.ebd09bf4.chunk.js"
   ]
 }
