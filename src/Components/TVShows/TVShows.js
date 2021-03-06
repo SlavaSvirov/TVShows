@@ -16,6 +16,23 @@ const TVShows = (props) => {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [currentShow, setCurrentShow] = React.useState();
 
+  // React.useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.tvmaze.com/search/shows?q=how}`
+  //       );
+  //       const items = await response.json();
+  //       props.setSerials(items);
+  //       setIsLoaded(true);
+  //       setFilteredItems(items);
+  //     } catch (error) {
+  //       setIsLoaded(true);
+  //       setError(error);
+  //     }
+  //   })();
+  // }, []);
+
   React.useEffect(() => {
     (async () => {
       try {
@@ -66,6 +83,7 @@ const TVShows = (props) => {
         <Search
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
+          placeholder={"Введите название сериала"}
         />
 
         {filteredItems.map((item) => {

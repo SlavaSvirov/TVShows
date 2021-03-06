@@ -56,6 +56,7 @@ const Episodes = (props) => {
         <Search
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
+          placeholder={"Поиск по эпизодам"}
         />
         <div>{props.valueFromStore}</div>
         <div>

@@ -2,13 +2,13 @@ import React from "react";
 import { Input, Checkbox } from "antd";
 import "./Search.css";
 
-function Search({ onChange, filterByImage }) {
+function Search({ onChange, filterByImage, placeholder }) {
   return (
     <div className="inputBar">
       <Input
         className="input-row"
         onChange={onChange}
-        placeholder="Введите название сериала"
+        placeholder={placeholder}
         size="800px"
       />
       <Checkbox className="checkboxCustom" onChange={filterByImage}>
