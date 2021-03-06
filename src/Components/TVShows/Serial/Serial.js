@@ -1,13 +1,13 @@
 import React from "react";
-import "./Serial.css";
+import styles from "./Serial.module.css";
 import noImg from "../../../img/noPhoto.png";
 
 function Serial({ name, img, rating, id, openModal }) {
   return (
-    <div className="serialContainer">
+    <div className={styles.serialContainer}>
       <div>
         <img
-          className="showImage"
+          className={styles.showImage}
           onClick={() => openModal(id)}
           src={(img && img.medium) || noImg}
           alt={name}

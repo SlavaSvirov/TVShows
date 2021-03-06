@@ -9,3 +9,6 @@
 .input-row {
   border-radius: 10px;
 }
+.checkboxOff {
+  display: none;
+}

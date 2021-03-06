@@ -1,15 +1,16 @@
 import React from "react";
 import { Button } from "antd";
 import { NavLink } from "react-router-dom";
-import youtube from "../../Api/youtube";
+import youtube from "../../../Api/youtube";
 import { Trailer } from "./Trailer/Trailer";
-import "./style.css";
+import styles from "./ModalContent.module.css";
 
 const ModalContent = ({ item }) => {
   const [video, setVideo] = React.useState([]);
   const [selectedVideo, setSelectedVideo] = React.useState(null);
 
-  const description = item.show.summary.replace(/<[^>]*>/g, "");
+  const description =
+    item.show.summary && item.show.summary.replace(/<[^>]*>/g, "");
   const year = new Date(item.show.premiered);
 
   React.useEffect(() => {
@@ -31,13 +32,12 @@ const ModalContent = ({ item }) => {
 
   return (
     <div>
-      <div className="trailer">
+      <div className={styles.trailer}>
         <Trailer video={selectedVideo} />
       </div>
       <span>year: {year.toLocaleDateString("ru")}</span>
-
       <div>{description}</div>
-      <div className="btn">
+      <div className={styles.btn}>
         <Button type="primary" onClick={() => {}}>
           <NavLink to={`/episodes/${item.show.id}`}>Список серий</NavLink>
         </Button>

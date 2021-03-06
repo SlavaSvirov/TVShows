@@ -2,7 +2,7 @@ import React from "react";
 import { Spin } from "antd";
 import { connect } from "react-redux";
 import { setEpisodes } from "../../data/redux/actionCreators";
-import styles from "./styles.module.css";
+import styles from "./Episodes.module.css";
 import Search from "../Search";
 import Episode from "./Episode";
 
@@ -31,9 +31,9 @@ const Episodes = (props) => {
   }, []);
 
   React.useEffect(() => {
-    const filteredEpisodes = props.episodes.filter((i) => {
-      const lowerName = i.name.toLowerCase();
-      if (checked && !i.image) {
+    const filteredEpisodes = props.episodes.filter((episode) => {
+      const lowerName = episode.name.toLowerCase();
+      if (checked && !episode.image) {
         return;
       }
       return lowerName.includes(text.toLowerCase());
@@ -70,7 +70,6 @@ const Episodes = (props) => {
               />
             );
           })}
-          <div>name</div>
         </div>
       </div>
     );

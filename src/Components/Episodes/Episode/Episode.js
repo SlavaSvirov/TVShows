@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import cn from "classnames";
-import styles from "./styles.module.css";
+import styles from "./Episode.module.css";
 import noImg from "../../../img/noPhoto.png";
 
 const Episode = ({ name, img, summary }) => {

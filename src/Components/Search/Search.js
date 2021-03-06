@@ -1,17 +1,17 @@
 import React from "react";
 import { Input, Checkbox } from "antd";
-import "./Search.css";
+import styles from "./Search.module.css";
 
-function Search({ onChange, filterByImage, placeholder }) {
+function Search({ onChange, filterByImage, placeholder, text }) {
   return (
-    <div className="inputBar">
+    <div className={styles.inputBar}>
       <Input
-        className="input-row"
+        className={styles.inputRow}
         onChange={onChange}
         placeholder={placeholder}
         size="800px"
       />
-      <Checkbox className="checkboxCustom" onChange={filterByImage}>
+      <Checkbox className={styles.checkboxCustom} onChange={filterByImage}>
         С изображениями
       </Checkbox>
     </div>

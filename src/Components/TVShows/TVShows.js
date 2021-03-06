@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { setSerials } from "../../data/redux/actionCreators";
 import { Spin, Modal } from "antd";
-import "./TVShows.css";
+import styles from "./TVShows.module.css";
 import Serial from "./Serial";
 import Search from "../Search";
 import ModalContent from "./ModalContent";
+import { filterSerialsByImg } from "../../services/filterSerialsByImg";
 
 const TVShows = (props) => {
   const [error, setError] = React.useState(null);
@@ -16,22 +17,7 @@ const TVShows = (props) => {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [currentShow, setCurrentShow] = React.useState();
 
-  // React.useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://api.tvmaze.com/search/shows?q=how}`
-  //       );
-  //       const items = await response.json();
-  //       props.setSerials(items);
-  //       setIsLoaded(true);
-  //       setFilteredItems(items);
-  //     } catch (error) {
-  //       setIsLoaded(true);
-  //       setError(error);
-  //     }
-  //   })();
-  // }, []);
+  React.useEffect(() => {}, []);
 
   React.useEffect(() => {
     (async () => {
@@ -40,9 +26,10 @@ const TVShows = (props) => {
           `https://api.tvmaze.com/search/shows?q=${text}`
         );
         const items = await response.json();
-        props.setSerials(items);
+        const preparedItems = filterSerialsByImg(items, checked);
+        props.setSerials(preparedItems);
         setIsLoaded(true);
-        setFilteredItems(items);
+        setFilteredItems(preparedItems);
       } catch (error) {
         setIsLoaded(true);
         setError(error);
@@ -51,9 +38,9 @@ const TVShows = (props) => {
   }, [text]);
 
   React.useEffect(() => {
-    const filteredItems = props.serials.filter((i) => {
-      const lowerName = i.show.name.toLowerCase();
-      if (checked && !i.show.image) {
+    const filteredItems = props.serials.filter((serial) => {
+      const lowerName = serial.show.name.toLowerCase();
+      if (checked && !serial.show.image) {
         return;
       }
       return lowerName.includes(text.toLowerCase());
@@ -79,13 +66,13 @@ const TVShows = (props) => {
     return <Spin />;
   } else {
     return (
-      <div className="TvShowsContainer">
+      <div className={styles.TvShowsContainer}>
         <Search
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
           placeholder={"Введите название сериала"}
+          text={text}
         />
-
         {filteredItems.map((item) => {
           return (
             <Serial
