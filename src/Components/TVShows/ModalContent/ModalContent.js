@@ -19,7 +19,7 @@ const ModalContent = ({ item }) => {
           part: "snippet",
           maxResult: 5,
           key: "AIzaSyBE_1QtDxWI9VT1qqLvc8R6YdQmx5lVONU",
-          q: `${item.show.name}`,
+          q: `${item.show.name} trailer`,
         },
       });
       console.log(trailer.data.items[0]);
