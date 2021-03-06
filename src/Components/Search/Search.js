@@ -8,7 +8,7 @@ function Search({ onChange, filterByImage }) {
       <Input
         className="input-row"
         onChange={onChange}
-        placeholder="Фильтр"
+        placeholder="Введите название сериала"
         size="800px"
       />
       <Checkbox className="checkboxCustom" onChange={filterByImage}>

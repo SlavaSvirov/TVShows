@@ -20,7 +20,7 @@ const TVShows = (props) => {
     (async () => {
       try {
         const response = await fetch(
-          "https://api.tvmaze.com/search/shows?q=man"
+          `https://api.tvmaze.com/search/shows?q=${text}`
         );
         const items = await response.json();
         props.setSerials(items);
@@ -31,7 +31,7 @@ const TVShows = (props) => {
         setError(error);
       }
     })();
-  }, []);
+  }, [text]);
 
   React.useEffect(() => {
     const filteredItems = props.serials.filter((i) => {
