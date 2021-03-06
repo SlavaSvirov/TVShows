@@ -5,6 +5,6 @@
 
 <hr style='height: 2px; '>
 <img src='./src/img/screenshots/modal-window.png'>
-<hr style='height: 2px; '>
+<hr style='height: 1px; '>
 
 <img src='./src/img/screenshots/episodes-pages.png'>

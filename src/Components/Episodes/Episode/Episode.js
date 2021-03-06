@@ -25,7 +25,7 @@ const Episode = ({ name, img, summary }) => {
     <div className={styles.episodeContainer}>
       <div className={styles.everyEpisode}>
         <img
-          className={styles.imageShow}
+          className={styles.imageEpisode}
           src={(img && img.medium) || noImg}
           alt={name}
         />
@@ -36,7 +36,11 @@ const Episode = ({ name, img, summary }) => {
       </p>
       <div className="btn">
         {toShowRollUpBtn && (
-          <Button type="primary" onClick={handleRollUp}>
+          <Button
+            className={styles.buttonRoll}
+            type="primary"
+            onClick={handleRollUp}
+          >
             {isRollUp ? "Свернуть" : "Развернуть"}
           </Button>
         )}

@@ -2,7 +2,7 @@
   background-color: #5a769491;
   text-align: center;
   align-content: center;
-  width: 1000px;
+  width: 55%;
   margin: 0 auto;
   color: #1e1448;
 }
@@ -16,9 +16,18 @@
 }
 .content {
   max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 1399px) {
+  .App {
+    width: 765px;
+  }
 }
 
 @media (max-width: 768px) {
+  .App {
+    width: 100%;
+  }
   .content {
     max-width: 700px;
   }

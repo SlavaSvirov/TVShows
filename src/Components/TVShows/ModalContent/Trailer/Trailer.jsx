@@ -14,7 +14,12 @@ export const Trailer = ({ video }) => {
 
   return (
     <div className={styles.videoPlayer}>
-      <iframe src={videoSrc} frameBorder="0"></iframe>
+      <iframe
+        className={styles.video}
+        src={videoSrc}
+        frameBorder="0"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };

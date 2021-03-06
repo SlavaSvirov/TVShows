@@ -1,7 +1,7 @@
 .episodeContainer {
   display: flex;
   padding: 10px;
-  width: 1000px;
+  width: 100%;
   text-align: left;
 }
 
@@ -13,7 +13,7 @@ p {
   margin: 25px;
 }
 
-.imageShow {
+.imageEpisode {
   cursor: pointer;
   border-radius: 20px;
   width: 250px;
@@ -24,4 +24,28 @@ p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .ellips {
+    white-space: normal;
+  }
+  .buttonRoll {
+    display: none;
+  }
+}
+
+@media (max-width: 499px) {
+  .ellips {
+    line-height: 16px;
+  }
+  .imageEpisode {
+    width: 220px;
+  }
+}
+@media (max-width: 376px) {
+  .imageEpisode {
+    width: 175px;
+    height: 130px;
+  }
 }

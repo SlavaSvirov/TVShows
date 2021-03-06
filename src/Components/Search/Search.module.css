@@ -12,3 +12,9 @@
 .checkboxOff {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .inputBar {
+    padding: 10px 10px;
+  }
+}
