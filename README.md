@@ -1,5 +1,7 @@
 <img src='./src/img/screenshots/main-page.png'>
-<a href='https://slavasvirov.github.io/TVShows'>DEMO</a>
-
+<a style='text-align: center;'href='https://slavasvirov.github.io/TVShows'>LIVE DEMO</a>
+<hr style='height: 2px; '>
 <img src='./src/img/screenshots/modal-window.png'>
-<img src='./src/img/screenshots/episodes-page.png'>
+<hr style='height: 2px; '>
+
+<img src='./src/img/screenshots/episodes-pages.png'>
