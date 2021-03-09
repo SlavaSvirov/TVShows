@@ -23,11 +23,9 @@ const ModalContent = ({ item }) => {
           q: `${item.show.name} trailer`,
         },
       });
-      console.log(trailer.data.items[0]);
       setVideo(trailer.data.items);
       setSelectedVideo(trailer.data.items[0]);
     })();
-    console.log(selectedVideo);
   }, [item.show.id]);
 
   return (

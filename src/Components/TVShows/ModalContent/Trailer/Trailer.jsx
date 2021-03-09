@@ -9,7 +9,6 @@ export const Trailer = ({ video }) => {
         <Spin />
       </div>
     );
-  console.log(video.id.videoId);
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
   return (

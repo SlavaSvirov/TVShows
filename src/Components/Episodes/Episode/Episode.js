@@ -29,10 +29,10 @@ const Episode = ({ name, img, summary }) => {
           src={(img && img.original) || noImg}
           alt={name}
         />
-        <div>{name}</div>
+        <div className={styles.episodeTitle}>{name}</div>
       </div>
       <div className={styles.descriptionDesk}>
-        <p className={cn({ [styles.ellips]: !isRollUp })}>
+        <p className={cn({[styles.description]: isRollUp}, { [styles.ellips]: !isRollUp })}>
           {description.replace(/<[^>]*>/g, "")}
         </p>
         <div className="btn">

@@ -8,7 +8,7 @@ import Search from "../Search";
 import ModalContent from "./ModalContent";
 import { filterSerialsByImg } from "../../services/filterSerialsByImg";
 
-const TVShows = (props) => {
+const TVShows = ({serials, setSerials}) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [filteredItems, setFilteredItems] = React.useState([]);
@@ -17,7 +17,9 @@ const TVShows = (props) => {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [currentShow, setCurrentShow] = React.useState();
 
-  React.useEffect(() => {}, []);
+  React.useEffect(()=>{
+    console.log(serials);
+  },[])
 
   React.useEffect(() => {
     (async () => {
@@ -27,7 +29,7 @@ const TVShows = (props) => {
         );
         const items = await response.json();
         const preparedItems = filterSerialsByImg(items, checked);
-        props.setSerials(preparedItems);
+        setSerials(preparedItems);
         setIsLoaded(true);
         setFilteredItems(preparedItems);
       } catch (error) {
@@ -38,7 +40,7 @@ const TVShows = (props) => {
   }, [text]);
 
   React.useEffect(() => {
-    const filteredItems = props.serials.filter((serial) => {
+    const filteredItems = serials.filter((serial) => {
       const lowerName = serial.show.name.toLowerCase();
       if (checked && !serial.show.image) {
         return;
@@ -47,6 +49,13 @@ const TVShows = (props) => {
     });
     setFilteredItems(filteredItems);
   }, [checked, text]);
+
+  React.useEffect(() => {
+    return () => {
+      
+      console.log(serials);
+    }
+  }, []);
 
   const handleFilterByImg = (event) => setChecked(event.target.checked);
 

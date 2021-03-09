@@ -4,7 +4,11 @@
   width: 100%;
   text-align: left;
 }
+.episodeTitle{
+  font-size: 18px;
+}
 .descriptionDesk {
+  padding-left: 10px;
   max-width: 69%;
 }
 .btn {
@@ -17,15 +21,21 @@
   width: 250px;
   height: 140px;
 }
-
+.description{
+  line-height: 16px;
+}
 .ellips {
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 16px;
 }
 .everyEpisode {
   max-width: 69%;
 }
 @media (max-width: 768px) {
+  .descriptionDesk{
+    padding: 0;
+  }
   .episodeContainer {
     flex-direction: column;
     align-items: center;
@@ -41,5 +51,11 @@
     line-height: 16px;
   }
 }
-@media (max-width: 376px) {
+@media (max-width: 425px) {
+  .everyEpisode{
+    max-width: 100%;
+  }
+  .descriptionDesk{
+    max-width: 100%;
+  }
 }

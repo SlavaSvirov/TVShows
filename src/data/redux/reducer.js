@@ -1,5 +1,5 @@
 const initialValue = { episodes: [], serials: [] };
-const reducer = (state = initialValue, action) => {
+const reducer = (state=initialValue, action) => {
   switch (action.type) {
     case "SET_EPISODES":
       return {
