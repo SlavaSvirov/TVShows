@@ -26,24 +26,26 @@ const Episode = ({ name, img, summary }) => {
       <div className={styles.everyEpisode}>
         <img
           className={styles.imageEpisode}
-          src={(img && img.medium) || noImg}
+          src={(img && img.original) || noImg}
           alt={name}
         />
         <div>{name}</div>
       </div>
-      <p className={cn({ [styles.ellips]: !isRollUp })}>
-        {description.replace(/<[^>]*>/g, "")}
-      </p>
-      <div className="btn">
-        {toShowRollUpBtn && (
-          <Button
-            className={styles.buttonRoll}
-            type="primary"
-            onClick={handleRollUp}
-          >
-            {isRollUp ? "Свернуть" : "Развернуть"}
-          </Button>
-        )}
+      <div className={styles.descriptionDesk}>
+        <p className={cn({ [styles.ellips]: !isRollUp })}>
+          {description.replace(/<[^>]*>/g, "")}
+        </p>
+        <div className="btn">
+          {toShowRollUpBtn && (
+            <Button
+              className={styles.buttonRoll}
+              type="primary"
+              onClick={handleRollUp}
+            >
+              {isRollUp ? "Свернуть" : "Развернуть"}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
