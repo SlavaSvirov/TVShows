@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Serial.module.css";
 import noImg from "../../../img/noPhoto.png";
 
-function Serial({ name, img, rating, id, openModal }) {
+function Serial({ name, img, id, openModal }) {
   return (
     <div className={styles.serialContainer}>
       <div>
@@ -12,8 +12,8 @@ function Serial({ name, img, rating, id, openModal }) {
           src={(img && img.medium) || noImg}
           alt={name}
         />
-        <div>
-          {name} {rating}
+        <div className={styles.title}>
+          {name} 
         </div>
       </div>
     </div>
