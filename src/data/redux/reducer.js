@@ -1,4 +1,4 @@
-const initialValue = { episodes: [], serials: [] };
+const initialValue = { episodes: [], serials: [], text: '' };
 const reducer = (state=initialValue, action) => {
   switch (action.type) {
     case "SET_EPISODES":
@@ -11,6 +11,11 @@ const reducer = (state=initialValue, action) => {
         ...state,
         serials: action.payload
       };
+    case "SET_TEXT":
+      return {
+        ...state,
+        text: action.payload
+      }
 
     default:
       return state;

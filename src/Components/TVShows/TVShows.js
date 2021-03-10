@@ -1,41 +1,41 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { connect } from "react-redux";
-import { setSerials } from "../../data/redux/actionCreators";
+import { setSerials, setText } from "../../data/redux/actionCreators";
 import { Spin, Modal } from "antd";
-import styles from "./TVShows.module.css";
-import Serial from "./Serial";
 import Search from "../Search";
+import Serial from "./Serial";
 import ModalContent from "./ModalContent";
 import { filterSerialsByImg } from "../../services/filterSerialsByImg";
+import styles from "./TVShows.module.css";
 
-const TVShows = ({serials, setSerials}) => {
+
+const TVShows = ({serials, setSerials, text, setText}) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [filteredItems, setFilteredItems] = React.useState([]);
   const [checked, setChecked] = React.useState(false);
-  const [text, setText] = React.useState("");
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [currentShow, setCurrentShow] = React.useState();
 
-  React.useEffect(()=>{
-    console.log(serials);
-  },[])
 
   React.useEffect(() => {
     (async () => {
-      try {
-        const response = await fetch(
-          `https://api.tvmaze.com/search/shows?q=${text}`
-        );
-        const items = await response.json();
-        const preparedItems = filterSerialsByImg(items, checked);
-        setSerials(preparedItems);
-        setIsLoaded(true);
-        setFilteredItems(preparedItems);
-      } catch (error) {
-        setIsLoaded(true);
-        setError(error);
-      }
+        try {
+          const response = await fetch(
+            `https://api.tvmaze.com/search/shows?q=${text}`
+          );
+        
+          console.log(serials);
+          const items = await response.json();
+          const preparedItems = filterSerialsByImg(items, checked);
+          setSerials(preparedItems);
+          setIsLoaded(true);
+          setFilteredItems(preparedItems);
+        } catch (error) {
+          setIsLoaded(true);
+          setError(error);
+        }
+      
     })();
   }, [text]);
 
@@ -50,12 +50,7 @@ const TVShows = ({serials, setSerials}) => {
     setFilteredItems(filteredItems);
   }, [checked, text]);
 
-  React.useEffect(() => {
-    return () => {
-      
-      console.log(serials);
-    }
-  }, []);
+  
 
   const handleFilterByImg = (event) => setChecked(event.target.checked);
 
@@ -76,15 +71,16 @@ const TVShows = ({serials, setSerials}) => {
   } else {
     return (
       <div className={styles.TvShowsContainer}>
-        <Search
+          <Search
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
           placeholder={"Введите название сериала"}
           text={text}
         />
+        
         {filteredItems.map((item) => {
           return (
-            <Serial
+              <Serial
               id={item.show.id}
               key={item.show.id}
               name={item.show.name}
@@ -93,8 +89,7 @@ const TVShows = ({serials, setSerials}) => {
             />
           );
         })}
-
-        <Modal
+          <Modal
           title="Описание Сериала"
           visible={isModalVisible}
           onOk={handleToggleModal}
@@ -102,21 +97,24 @@ const TVShows = ({serials, setSerials}) => {
         >
           <ModalContent item={currentShow} />
         </Modal>
+        
       </div>
     );
   }
 };
 
 function mapStateToProps(state) {
-  const { serials } = state;
+  const { serials, text } = state;
   return {
     serials,
+    text
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setSerials: (items) => dispatch(setSerials(items)),
+    setText: (items) => dispatch(setText(items))
   };
 };
 
