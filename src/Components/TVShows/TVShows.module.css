@@ -1,4 +1,10 @@
 .TvShowsContainer {
   min-height: 100vh;
   width: 100%;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: baseline;
 }

@@ -1,5 +1,5 @@
 .serialContainer {
-  display: inline-block;
+  max-width: 200px;
   padding: 5px;
 }
 
@@ -12,4 +12,5 @@
 .title {
   font-size: 16px;
   font-weight: bold;
+  color: rgb(90, 173, 119);
 }
