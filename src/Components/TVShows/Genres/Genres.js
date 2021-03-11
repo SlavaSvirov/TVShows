@@ -20,7 +20,7 @@ export const Genres = ({onChange}) => {
         <Select
         mode="multiple"
         size={size}
-        placeholder="Please select"
+        placeholder="Please select genres"
         defaultValue={[]}
         onChange={onChange}
         style={{ width: '100%' }}
