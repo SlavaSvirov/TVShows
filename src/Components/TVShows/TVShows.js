@@ -7,12 +7,14 @@ import Serial from "./Serial";
 import ModalContent from "./ModalContent";
 import { filterSerialsByImg } from "../../services/filterSerialsByImg";
 import styles from "./TVShows.module.css";
+import { Genres } from "./Genres/Genres";
 
 
 const TVShows = ({serials, setSerials, text, setText}) => {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [filteredItems, setFilteredItems] = React.useState([]);
+  const [genres, setGenres] = React.useState([])
   const [checked, setChecked] = React.useState(false);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [currentShow, setCurrentShow] = React.useState();
@@ -25,7 +27,6 @@ const TVShows = ({serials, setSerials, text, setText}) => {
             `https://api.tvmaze.com/search/shows?q=${text}`
           );
         
-          console.log(serials);
           const items = await response.json();
           const preparedItems = filterSerialsByImg(items, checked);
           setSerials(preparedItems);
@@ -48,13 +49,29 @@ const TVShows = ({serials, setSerials, text, setText}) => {
       return lowerName.includes(text.toLowerCase());
     });
     setFilteredItems(filteredItems);
+    
   }, [checked, text]);
 
-  
+  React.useEffect(() => {
+    console.log(genres);
+    if (!genres.length) {
+      setFilteredItems(serials)
+    } else {
+      let filteredGenres = serials.filter((el) => {
+        return el.show.genres.some((el, i) => {
+          return el === genres[i]
+        })
+      });
+      setFilteredItems(filteredGenres);
+      console.log(serials);
+    }
+  },[genres])
 
   const handleFilterByImg = (event) => setChecked(event.target.checked);
 
   const handleFilterByText = (event) => setText(event.target.value);
+
+  const handleFilterbyGenres = (event) => setGenres(event);
 
   const handleToggleModal = (id) => {
     if (id) {
@@ -77,8 +94,9 @@ const TVShows = ({serials, setSerials, text, setText}) => {
           placeholder={"Введите название сериала"}
           text={text}
         />
-        
-        {filteredItems.map((item) => {
+        <Genres onChange={ handleFilterbyGenres}/>
+        <div className={styles.serialsContainer}>
+           {filteredItems.map((item) => {
           return (
               <Serial
               id={item.show.id}
@@ -89,6 +107,8 @@ const TVShows = ({serials, setSerials, text, setText}) => {
             />
           );
         })}
+        </div>
+       
           <Modal
           title="Описание Сериала"
           visible={isModalVisible}

@@ -1,0 +1,11 @@
+.genresPanel {
+}
+.genresList {
+  padding: 10px 80px;
+}
+
+@media (max-width: 768px) {
+  .genresList {
+    padding: 10px 10px;
+  }
+}
