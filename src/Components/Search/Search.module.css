@@ -5,6 +5,7 @@
 .checkboxCustom {
   color: rgb(90, 151, 120);
   border-radius: 50%;
+  padding-top: 10px;
 }
 .input-row {
   border-radius: 10px;

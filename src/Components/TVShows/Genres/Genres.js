@@ -29,6 +29,7 @@ export const Genres = ({onChange}) => {
         <Option key='Action'> Action </Option>
         <Option key='Fantasy'> Fantasy </Option>
         <Option key='Comedy'> Comedy</Option>
+        <Option key='Thriller'> Thriller</Option>
       </Select>
         </div>
         

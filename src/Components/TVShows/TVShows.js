@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { setSerials, setText } from "../../data/redux/actionCreators";
 import { Spin, Modal } from "antd";
-import Search from "../Search";
+import SearchBar from "../Search";
 import Serial from "./Serial";
 import ModalContent from "./ModalContent";
 import { filterSerialsByImg } from "../../services/filterSerialsByImg";
@@ -57,13 +57,35 @@ const TVShows = ({serials, setSerials, text, setText}) => {
     if (!genres.length) {
       setFilteredItems(serials)
     } else {
+      // let filteredGenres = serials.filter((el) => {
+      //   return el.show.genres.find((genre, i) => {
+      //     return genre.includes(genres[i])
+      //   })
+      // });
       let filteredGenres = serials.filter((el) => {
-        return el.show.genres.some((el, i) => {
-          return el === genres[i]
-        })
+        for (let i = 0; i < genres.length; i++){
+          if (el.show.genres.length === 0) {
+              return false
+            }
+          for (let j = 0; j < el.show.genres.length; j++){
+            if (el.show.genres.includes(genres[i])) {
+            return true;
+            }
+            if (i === genres.length - 1) {
+              return false
+            }
+            }
+        }
+        // 
+        //   debugger;
+        //   if (el.show.genres.indexOf(genres[i] !== -1)) {
+        //    return true
+        //  }
+          return true
       });
-      setFilteredItems(filteredGenres);
       console.log(serials);
+      console.log(filteredGenres);
+      setFilteredItems(filteredGenres);
     }
   },[genres])
 
@@ -88,7 +110,7 @@ const TVShows = ({serials, setSerials, text, setText}) => {
   } else {
     return (
       <div className={styles.TvShowsContainer}>
-          <Search
+          <SearchBar
           onChange={handleFilterByText}
           filterByImage={handleFilterByImg}
           placeholder={"Введите название сериала"}
