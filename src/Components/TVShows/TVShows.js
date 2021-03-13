@@ -53,16 +53,10 @@ const TVShows = ({serials, setSerials, text, setText}) => {
   }, [checked, text]);
 
   React.useEffect(() => {
-    console.log(genres);
     if (!genres.length) {
       setFilteredItems(serials)
     } else {
-      // let filteredGenres = serials.filter((el) => {
-      //   return el.show.genres.find((genre, i) => {
-      //     return genre.includes(genres[i])
-      //   })
-      // });
-      let filteredGenres = serials.filter((el) => {
+      let filteredGenres = serials.filter(el=> {
         for (let i = 0; i < genres.length; i++){
           if (el.show.genres.length === 0) {
               return false
@@ -76,15 +70,8 @@ const TVShows = ({serials, setSerials, text, setText}) => {
             }
             }
         }
-        // 
-        //   debugger;
-        //   if (el.show.genres.indexOf(genres[i] !== -1)) {
-        //    return true
-        //  }
           return true
       });
-      console.log(serials);
-      console.log(filteredGenres);
       setFilteredItems(filteredGenres);
     }
   },[genres])
@@ -125,12 +112,12 @@ const TVShows = ({serials, setSerials, text, setText}) => {
               key={item.show.id}
               name={item.show.name}
               img={item.show.image}
+              genres={item.show.genres}
               openModal={handleToggleModal}
             />
           );
         })}
         </div>
-       
           <Modal
           title="Описание Сериала"
           visible={isModalVisible}
@@ -139,7 +126,6 @@ const TVShows = ({serials, setSerials, text, setText}) => {
         >
           <ModalContent item={currentShow} />
         </Modal>
-        
       </div>
     );
   }

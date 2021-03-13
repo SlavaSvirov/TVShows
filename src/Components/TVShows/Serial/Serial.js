@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Serial.module.css";
 import noImg from "../../../img/noPhoto.png";
 
-function Serial({ name, img, id, openModal }) {
+function Serial({ name, img, id, openModal, genres }) {
   return (
     <div className={styles.serialContainer}>
       <div>
@@ -14,6 +14,9 @@ function Serial({ name, img, id, openModal }) {
         />
         <div className={styles.title}>
           {name} 
+        </div>
+        <div>
+          {genres.toString()}
         </div>
       </div>
     </div>

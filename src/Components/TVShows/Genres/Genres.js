@@ -8,13 +8,6 @@ const { Option } = Select;
 export const Genres = ({onChange}) => {
     const [size, setSize] = React.useState('default');
 
-    function handleChange(value) {
-     console.log(`Selected: ${value}`);
-    }
-    
-    const handleSizeChange = e => {
-    setSize(e.target.value);
-    };
     return (
         <div className={styles.genresList}>
         <Select
@@ -30,6 +23,12 @@ export const Genres = ({onChange}) => {
         <Option key='Fantasy'> Fantasy </Option>
         <Option key='Comedy'> Comedy</Option>
         <Option key='Thriller'> Thriller</Option>
+        <Option key='Horror'> Horror</Option>
+        <Option key='Science-Fiction'> Science-Fiction</Option>
+        <Option key='Mystery'> Mystery</Option>
+        <Option key='Romance'> Romance</Option>
+        <Option key='Crime'> Crime</Option>
+        <Option key='Music'> Music</Option>
       </Select>
         </div>
         
